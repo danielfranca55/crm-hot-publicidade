@@ -1,0 +1,20 @@
+{
+  "contatos": [
+    {
+      "id": "1",
+      "nome": "João Silva",
+      "telefone": "99999-9999",
+      "categoria": "Leads",
+      "subcategoria": "Trabalhando",
+      "observacao": "Cliente em negociação"
+    },
+    {
+      "id": "9038",
+      "nome": "Davi ",
+      "telefone": "97854623",
+      "categoria": "Malling",
+      "subcategoria": "",
+      "observacao": ""
+    }
+  ]
+}

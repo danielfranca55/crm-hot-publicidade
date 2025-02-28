@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Contatos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="checkAuth()">
+    <h1>Gestão de Contatos</h1>
+
+    <button onclick="logout()">Sair</button> <!-- Botão de Logout -->
+
+    <form id="contact-form">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="text" id="telefone" placeholder="Telefone" required>
+        <select id="categoria">
+            <option value="Malling">Malling</option>
+            <option value="Leads">Leads</option>
+        </select>
+        <input type="text" id="subcategoria" placeholder="Subcategoria">
+        <input type="text" id="observacao" placeholder="Observação">
+        <button type="submit">Adicionar Contato</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Categoria</th>
+                <th>Subcategoria</th>
+                <th>Observação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="contacts-list"></tbody>
+    </table>
+
+    <!-- Carregar scripts após o HTML -->
+    <script src="auth.js" defer></script>
+    <script src="app.js" defer></script>
+</body>
+</html>

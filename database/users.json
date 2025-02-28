@@ -1,0 +1,14 @@
+{
+  "usuarios": [
+    {
+      "id": "1740678521085",
+      "username": "admin",
+      "password": "$2b$10$h0xXi86l7Sn8FQ6G7GiJ/.dXf/jdmMid6C.hottKR2ciqOTY8s/iG"
+    },
+    {
+      "id": "1740686192297",
+      "username": "daniel",
+      "password": "$2b$10$awB/QZu5hMiPctLlXQ1.JOVhexs.2749yIxeOxS/evc8.DE1c50Vy"
+    }
+  ]
+}
