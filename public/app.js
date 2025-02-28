@@ -1,28 +1,39 @@
 const API_URL = "http://localhost:3000/contatos";
 
+// 🔹 Captura os elementos do filtro
+const searchInput = document.getElementById("search-input");
+const filterCategory = document.getElementById("filter-category");
+
 // 🔹 Carregar contatos ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("🔄 Tentando carregar contatos...");
     loadContacts();
 });
 
+// 🔹 Função para carregar contatos e aplicar filtros
 function loadContacts() {
-    fetch(API_URL, { method: "GET" })
+    fetch(API_URL)
     .then(response => response.json())
     .then(data => {
-        console.log("✅ Contatos carregados:", data);
-
         const contactsList = document.getElementById("contacts-list");
-        contactsList.innerHTML = ""; // Limpar lista antes de inserir
+        contactsList.innerHTML = ""; // Limpar lista
 
-        if (!Array.isArray(data) || data.length === 0) {
-            console.warn("⚠️ Nenhum contato encontrado.");
-            return;
-        }
+        // Pegar valores dos filtros
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = filterCategory.value;
 
-        data.forEach(contact => {
+        // Aplicar filtros nos contatos
+        const filteredContacts = data.filter(contact => {
+            const matchNameOrPhone = contact.nome.toLowerCase().includes(searchTerm) ||
+                                     contact.telefone.includes(searchTerm);
+
+            const matchCategory = selectedCategory === "" || contact.categoria === selectedCategory;
+
+            return matchNameOrPhone && matchCategory;
+        });
+
+        // Exibir os contatos filtrados
+        filteredContacts.forEach(contact => {
             const row = document.createElement("tr");
-
             row.innerHTML = `
                 <td>${contact.nome}</td>
                 <td>${contact.telefone}</td>
@@ -33,12 +44,15 @@ function loadContacts() {
                     <button class="delete" onclick="deleteContact('${contact.id}')">Excluir</button>
                 </td>
             `;
-
             contactsList.appendChild(row);
         });
     })
     .catch(error => console.error("❌ Erro ao carregar contatos:", error));
 }
+
+// 🔹 Atualizar contatos ao digitar ou selecionar filtro
+searchInput.addEventListener("input", loadContacts);
+filterCategory.addEventListener("change", loadContacts);
 
 // 🔹 Adicionar contato
 document.getElementById("contact-form").addEventListener("submit", function (event) {

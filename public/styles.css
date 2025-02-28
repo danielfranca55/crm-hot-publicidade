@@ -46,3 +46,17 @@ button {
 button.delete {
     background-color: #dc3545;
 }
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.filter-container input,
+.filter-container select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
